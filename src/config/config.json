@@ -1,0 +1,16 @@
+{
+    "development": {
+        "username": "root",
+        "password": "",
+        "database": "rolling_glory",
+        "host": "localhost",
+        "dialec": "mysql"
+    },
+    "PORT": 3001,
+    "secret": "supersecret",
+    "user": {
+        "id": "",
+        "email": "",
+        "name": ""
+    }
+}

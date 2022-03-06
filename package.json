@@ -1,0 +1,36 @@
+{
+  "name": "rolling-glory",
+  "version": "1.0.0",
+  "description": "Rolling Glory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/api/v1/routes/index.js",
+    "dev": "nodemon ./src/api/v1/routes/index.js"
+  },
+  "keywords": [
+    "Garudakasir",
+    "express",
+    "js",
+    "node",
+    "js"
+  ],
+  "author": "Eko Saputra",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.12.5",
+    "sequelize-cli": "^6.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
