@@ -227,7 +227,7 @@ const postRating = async (data) => {
         await RatingModel.create(data, {validate: true});
         let dataRating = await RatingModel.findOne({
             attributes: [
-                [Db.literal('ROUND((SUM(rating))/COUNT(id),1)'), 'rating_total'],
+                [Db.literal('ROUND(ROUND((SUM(rating*2))/COUNT(id),0)),1'), 'rating_total'],
                 [Db.literal('COUNT(id)'), 'filed_total'],
             ],
             where: {
@@ -282,6 +282,5 @@ const checkRedeemUser = async (data) => {
         return false;
     }
 }
-
 
 module.exports = { getAll, getOne, post, deleteOne, update, redeem, rating, addStok };
