@@ -3,7 +3,6 @@ const RedeemModel = require("../models/RedeemModel");
 const RatingModel = require("../models/RatingModel");
 const RedeemDetailModel = require("../models/RedeemDetailModel");
 const StockHistoryModel = require("../models/StockHistoryModel");
-const config = require('./../../../config/config.json')
 const Paging = require("./../helper/HandlePaging");
 const { Db } = require("../../../config/database");
 
@@ -69,7 +68,7 @@ const getOne = async (req, res) => {
 
 const post = async (req, res) => {
     try{
-        let data = {...req.body, user_create: config.user.id};
+        let data = {...req.body, user_create: res.locals.userId};
         const model = await GiftModel.create(data, { validate: true });
         if(!model) throw model;
         res.status(200).json({
@@ -127,7 +126,7 @@ const redeem = async (req, res) => {
     let t = await Db.transaction();
     try {
         let redeemPost = await RedeemModel.create(
-            {...req.body.redeem, user_create: config.user.id},
+            {...req.body.redeem, user_create: res.locals.userId},
             {validate: true, transaction: t}
         )
         
@@ -171,7 +170,7 @@ const redeem = async (req, res) => {
 
 const rating = async (req, res) => {
     try {
-        let data = {...req.body, user_create: config.user.id};
+        let data = {...req.body, user_create: res.locals.userId};
         let checkRedeemUser_ = await checkRedeemUser(data);
         if(!checkRedeemUser_) res.status(500);
         let postRating_ = await postRating(data);
@@ -263,7 +262,7 @@ const checkRedeemUser = async (data) => {
         let model = await RedeemModel.findAndCountAll({
             where:
             {
-                user_create: config.user.id
+                user_create: res.locals.userId
             },
             include : [
                 {
